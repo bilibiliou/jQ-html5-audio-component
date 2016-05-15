@@ -1,0 +1,23 @@
+{
+  "name": "jq-html5-audio-component",
+  "version": "1.0.3",
+  "description": "这是一个基于HTML5 和 Css3的小型web音频播放器 --设计以及代码全部由numerhero(Owen)完成",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NumerHero/jQ-html5-audio-component.git"
+  },
+  "author": "Owen <469564715@qq.com> (http://numerhero.github.io/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NumerHero/jQ-html5-audio-component/issues"
+  },
+  "homepage": "https://github.com/NumerHero/jQ-html5-audio-component#readme",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-uglify": "^1.5.3"
+  }
+}

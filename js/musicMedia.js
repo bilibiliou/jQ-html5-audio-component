@@ -238,10 +238,11 @@
             if (!dropBoff) {
                 var h = playBody.offset().top,
                     sct = $(document).scrollTop()
+                    
                 if(h >= innerHeight+sct-(oH+oMenuHeight)) {
-                    playBody.addClass("t-5");
+                    playBody.addClass("musicMedia-wrap-t-5");
                     setTimeout(function () {
-                        playBody.removeClass("t-5");
+                        playBody.removeClass("musicMedia-wrap-t-5");
                     },500);
                     playBody.css("top",innerHeight+sct-(oH+oMenuHeight));
                 }
@@ -336,21 +337,21 @@
 
         // 显示窗口
         oShowPlayBox.on("click",function() {
-            playBody.addClass("t-5");
+            playBody.addClass("musicMedia-wrap-t-5");
             playBody.css("left" , 0);
             oShowPlayBox.addClass("minimize-hidden");
             setTimeout(function () {
-                playBody.removeClass("t-5");
+                playBody.removeClass("musicMedia-wrap-t-5");
             },500);
         });
 
         // 最小化窗口
         oMinimize.on("click" , function () {
-            playBody.addClass("t-5");
+            playBody.addClass("musicMedia-wrap-t-5");
             playBody.css("left" , -oW);
             oShowPlayBox.removeClass("minimize-hidden");
             setTimeout(function () {
-                playBody.removeClass("t-5");
+                playBody.removeClass("musicMedia-wrap-t-5");
             },500);
         })
 
