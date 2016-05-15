@@ -40,121 +40,117 @@ $disc : "./img/disc.png";
     user-select: $mod;
 }
 
-body {
-    margin: 0;
-}
-
-* {
-    box-sizing: border-box;
-    font-family: arial,"微软雅黑";
-}
-
-
-ul,ol {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-a {
-    text-decoration: none;
-    color: $mc;
-}
-
-button {
-    width: 100%;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    outline: none;
-}
-
-figure {
-    margin: 0;
-}
-
-i {
-    display: inline-block;
-}
-
-h2 {
-    font-size: 100%;
-    margin: 0;
-}
-
-.text-stress {
-    text-fill-color: transparent;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    -webkit-background-clip: text;
-    background-size: 200% 100%;
-    -webkit-background-size: 200% 100%;
-}
-
-.text-ellipsis {
-    text-overflow:  ellipsis;
-    overflow: hidden;
-    white-space:nowrap; 
-}
-
-.just-select-text {
-    @include select(text);
-}
-
-.clear-select {
-    @include select(none);
-}
-
-.clearfix {
-    zoom: 1;
-}
-
-.clearfix::after {
-    content: ".";
-    height: 0;
-    display: block;
-    visibility: hidden;
-    clear: both;
-}
-
-.none {
-    display: none;
-}
-
-.n-h {
-    height: 0 !important;
-}
-
-.hidden {
-    visibility: hidden; 
-}
-
-.move-left {
-    transform: translateX(0px) !important;
-    -webkit-transform: translateX(0px) !important;
-}
-
-.move-right {
-    transform: translateX(-480px) !important;
-    -webkit-transform: translateX(-480px) !important;
-}
-
-.arrow-rotate {
-    animation: 0.5s rotate_180;
-    animation-fill-mode: forwards;
-    -webkit-animation: 0.5s rotate_180;
-    -webkit-animation-fill-mode: forwards;
-}
-
-.t-5 {
-    @include t(0.5);
-}
-
 .musicMedia-wrap {
     *::selection {
         background: transparent;
         color: #1C86D1;
     }
+
+    * {
+        box-sizing: border-box;
+        font-family: arial,"微软雅黑";
+    }
+
+    ul,ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    a {
+        text-decoration: none;
+        color: $mc;
+    }
+
+    button {
+        width: 100%;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        outline: none;
+    }
+
+    figure {
+        margin: 0;
+    }
+
+    i {
+        display: inline-block;
+    }
+
+    h2 {
+        font-size: 100%;
+        margin: 0;
+    }
+
+    .text-stress {
+        text-fill-color: transparent;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+        background-size: 200% 100%;
+        -webkit-background-size: 200% 100%;
+    }
+
+    .text-ellipsis {
+        text-overflow:  ellipsis;
+        overflow: hidden;
+        white-space:nowrap; 
+    }
+
+    .just-select-text {
+        @include select(text);
+    }
+
+    .clear-select {
+        @include select(none);
+    }
+
+    .clearfix {
+        zoom: 1;
+    }
+
+    .clearfix::after {
+        content: ".";
+        height: 0;
+        display: block;
+        visibility: hidden;
+        clear: both;
+    }
+
+    .none {
+        display: none;
+    }
+
+    .n-h {
+        height: 0 !important;
+    }
+
+    .hidden {
+        visibility: hidden; 
+    }
+
+    .move-left {
+        transform: translateX(0px) !important;
+        -webkit-transform: translateX(0px) !important;
+    }
+
+    .move-right {
+        transform: translateX(-480px) !important;
+        -webkit-transform: translateX(-480px) !important;
+    }
+
+    .arrow-rotate {
+        animation: 0.5s rotate_180;
+        animation-fill-mode: forwards;
+        -webkit-animation: 0.5s rotate_180;
+        -webkit-animation-fill-mode: forwards;
+    }
+
+    .t-5 {
+        @include t(0.5);
+    }
+
 
     position: absolute;
     top: 250px;
@@ -167,7 +163,7 @@ h2 {
     border-radius: 5px 5px 5px 0;
     z-index: 5201314;
     font-size: 13px;
-    
+    @include select(text);
     .musicMedia-player-list-wrap {
         position: absolute;
         z-index: 2;
@@ -857,8 +853,6 @@ h2 {
             font-weight: 500;
             text-shadow: 0px 0px 1px 1px #000;
         }
-        
-        
     }
 
     .minimize-hidden {
