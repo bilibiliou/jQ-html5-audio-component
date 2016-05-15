@@ -51,7 +51,7 @@ $(".musicMedia-wrap").musicMedia({
             title: "蓝莲花",
             singer: "许巍",
             AlbumName: "时光.漫步",
-            AlbumBg: "http://p1.music.126.net/C6txAWMGlVmAcAD37RVutQ==/122045790684028.jpg",
+            AlbumBg: "xxxx.jpg",
             url: "xxxx.mp3"
         }
     ]},{
