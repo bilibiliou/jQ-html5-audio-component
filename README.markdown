@@ -1,5 +1,12 @@
 这是一个基于HTML5 和 Css3的小型web音频播放器 --设计以及代码全部由numerhero(Owen)完成
 
+## 样式
+
+此项目的第一首歌，献给光叔，致远行。
+
+![demo-pic](http://numerhero.github.io/assets/download/jQ-html5-audio-component/demo-pic.png)
+
+
 ## get start
 
 ```
