@@ -1,4 +1,4 @@
-这是一个基于HTML5 和 Css3的小型web音频播放器 --设计以及代码全部由numerhero(Owen)完成
+这是一个基于HTML5 和 Css3的小型web音频播放器
 
 ## 样式
 

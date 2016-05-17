@@ -1,7 +1,7 @@
 {
   "name": "jq-html5-audio-component",
   "version": "1.0.3",
-  "description": "这是一个基于HTML5 和 Css3的小型web音频播放器 --设计以及代码全部由numerhero(Owen)完成",
+  "description": "这是一个基于HTML5 和 Css3的小型web音频播放器",
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
