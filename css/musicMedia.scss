@@ -4,7 +4,7 @@ $icon : "./img/icon.png";
 $disc : "./img/disc.png";
 // mixin
 @mixin p-cet () {
-    position: absolute;
+    position: absolute; 
     top: 50%;
     left: 50%;
     -webkit-transform: translate(-50%,-50%);
@@ -358,7 +358,7 @@ $disc : "./img/disc.png";
             z-index: -1;
             width: 100%;
             height: 100%;
-            background: linear-gradient(-45deg,rgba(214,81,162,1) 0%, rgba(80,216,192,1) 100%);
+            background: linear-gradient(-45deg, #FDF6FA 0%, #F2FAFA 100%);
             @include blur(20);
             opacity: 0.5;
         }
