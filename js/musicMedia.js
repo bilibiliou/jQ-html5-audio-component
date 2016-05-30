@@ -705,8 +705,8 @@
             barRH = BoxHeight - pBoxHeight
            
 
-        if(pBoxHeight === 0) {
-            scrollBar.css("height" , 0); 
+        if(dH <= 0) {
+            scrollBox.css("display","none"); 
         } else {
             scrollBar.css("height" , barRH); 
         }

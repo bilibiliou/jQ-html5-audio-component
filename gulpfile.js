@@ -4,5 +4,5 @@ var gulp = require('gulp'),
     gulp.task('minifyjs', function() {
     return gulp.src('./js/musicMedia.js')    
         .pipe(uglify())    
-        .pipe(gulp.dest('./js/musicMedia.min.js'));
+        .pipe(gulp.dest('./js/min/musicMedia.min.js'));
     });
