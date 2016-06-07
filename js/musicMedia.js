@@ -706,7 +706,8 @@
            
 
         if(dH <= 0) {
-            scrollBox.css("display","none"); 
+            scrollBox.css("display","none");
+            return; 
         } else {
             scrollBar.css("height" , barRH); 
         }
