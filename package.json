@@ -1,6 +1,6 @@
 {
   "name": "jq-html5-audio-component",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "这是一个基于HTML5 和 Css3的小型web音频播放器",
   "main": "gulpfile.js",
   "scripts": {
