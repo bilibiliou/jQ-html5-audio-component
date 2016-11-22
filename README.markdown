@@ -6,7 +6,6 @@
 
 ![demo-pic](http://numerhero.github.io/assets/download/jQ-html5-audio-component/demo-pic.png)
 
-
 ## get start
 
 ```
@@ -15,7 +14,7 @@
 <script src="musicMedia.min.js"></script>
 ```
 
-修改路径
+## 修改路径
 
 默认的背景图片 和 小图片需要在js 和 sass中进行修改
 
@@ -70,6 +69,11 @@ $(".musicMedia-wrap").musicMedia({
     }]);
 ```
 
+## 新增错误处理
+
+![pic](http://numerhero.github.io/assets/download/jQ-html5-audio-component/error.png)
+
+如图，如果蓝莲花无法加载则会自动加载下一首或上一首 并提醒用户无法播放和禁止用户再点击播放
 
 ## 依赖
 

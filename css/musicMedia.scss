@@ -2,6 +2,7 @@
 $mc : #1C86D1;
 $icon : "./img/icon.png";
 $disc : "./img/disc.png";
+
 // mixin
 @mixin p-cet () {
     position: absolute; 
@@ -732,7 +733,8 @@ $disc : "./img/disc.png";
                 bottom: 15px;
                 height: 6px;
                 width: 120px;
-                
+                cursor: pointer;
+
                 border: 1px solid #413C43;
                 @include br(3px);
 
@@ -757,8 +759,7 @@ $disc : "./img/disc.png";
                 }
             }
 
-            .musicMedia-player-vol::before {
-                content: "";
+            .volume-switch {
                 position: absolute;
                 top: -6px;
                 left: -20px;
@@ -766,9 +767,15 @@ $disc : "./img/disc.png";
                 display: block;
                 width: 16px;
                 height: 16px;
-
+            }
+            
+            .no-mute {
                 background: url($icon) -34px -10px;
             }
+            
+            .mute {
+                background: url($icon) -62px -11px;
+            } 
 
             .musicMedia-player-muisc-menu {
                 position: absolute;

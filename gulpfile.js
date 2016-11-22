@@ -12,5 +12,4 @@ let gulp = require('gulp'),
         }))   
         .pipe(uglify())    
         .pipe(gulp.dest('./js'))
-
     });

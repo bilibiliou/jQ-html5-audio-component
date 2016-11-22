@@ -84,6 +84,7 @@
             
             '<div class="musicMedia-player-footer-options">' +
                 '<div class="musicMedia-player-vol">' +
+                    '<span class="volume-switch no-mute" title="禁音"></span>' +
                     '<div class="musicMedia-player-vol-process" title="声音">' +
                         '<div class="musicMedia-player-vol-process-anchor" title="声音"></div>' +
                     '</div>' +
@@ -141,7 +142,9 @@
         allTime = $(".all-time")
 
     // music-vol
-    var volAnchor = $(".musicMedia-player-vol-process-anchor"),
+    var volBox    = $(".musicMedia-player-vol"),
+        volumeSwitch = $(".volume-switch"),
+        volAnchor = $(".musicMedia-player-vol-process-anchor"),
         volProcess = $(".musicMedia-player-vol-process");
     
     // music-menu
@@ -213,8 +216,12 @@
         });
 
         // 切换专辑后将对应Music 指向切换！
-        var Music = Favorite[nowFavorite].musicList; 
+        var Music = Favorite[nowFavorite].musicList;
+        
+        
         loadMuisc(nowMusic);
+
+        var DeleteStack = [];
 
         // 生成专辑列表
         createFavoriteList();
@@ -326,14 +333,34 @@
             var currWidth = volProcess.css("width"),
                 r = o.left;
 
-                if (r > 118) {
-                    r = 118
-                } else if (r <= 4) {
-                    r = 4;
-                }
-                playAudio.volume = ((r-4)/114).toFixed(2);
-                volProcess.css("width" , r);
+            modifyVolume(r);
         });
+
+        // 声音点击拖放
+        volBox.on("click", function (ev) {
+          var MouseOffsetX = ev.pageX,
+              volProcessOffset = volBox.offset().left,
+              d = MouseOffsetX - volProcessOffset;
+
+              modifyVolume(d);
+        })
+
+        function modifyVolume (data) {
+          if (data > 118) {
+              data = 118
+          } else if (data <= 4) {
+              data = 4;
+          }
+          playAudio.volume = ((data-4)/114).toFixed(2);
+          volProcess.css("width" , data);
+          if (data <= 4) {
+            volumeSwitch.removeClass("no-mute");
+            volumeSwitch.addClass("mute");
+          } else {
+            volumeSwitch.addClass("no-mute");
+            volumeSwitch.removeClass("mute");
+          }
+        }
 
         // 显示窗口
         oShowPlayBox.on("click",function() {
@@ -447,8 +474,24 @@
         });
 
         function loadMuisc (index) {
-            playAudio.src = Music[index].url;
+            var oNewAudio =  new Audio(Music[index].url);
 
+            // 加载成功后 将加载好的 对象赋值给播放器
+            oNewAudio.onloadeddata = function () {
+              playAudio.src = oNewAudio.src;
+            }
+
+            // 如果出现错误 403 404 跳转到下一首歌曲
+            oNewAudio.onerror = function (err) {
+              var bannedElement = $("button[data-favorite-index="+nowFavorite+"][data-music-index="+index+"]"),
+                  oName = bannedElement.find(".muisc-name")
+
+              alert("加载歌曲 <"+ oName.html() +">出错，为你播放下一首歌曲");
+              DeleteStack.push([nowFavorite,index]);
+              delete Music[index].url;
+              nextMuisc();
+            }
+            
             // 加载完Mp3后,就可以修改播放器内的各个值
             playAudio.onloadedmetadata = function () {
                 AlbumName.html(Music[nowMusic].AlbumName);
@@ -543,10 +586,20 @@
             MusicListoLis.eq(nowMusic).removeClass("active");
             if (nowMusic === 0) {
                 nowMusic = Music.length - 1;
-                loadMuisc(nowMusic);
             } else {
-                loadMuisc(--nowMusic);
+                nowMusic -= 1;
             }
+
+            // 如果上一首的歌曲源已经确定无法使用，递归上一首
+            DeleteStack.forEach(function (value) {
+              var DeleteFavorite = value[0],
+                  DeleteIndex = value[1]
+              if (nowFavorite === DeleteFavorite && nowMusic === DeleteIndex) {
+                return prevMuisc();
+              }
+            })
+
+            loadMuisc(nowMusic);
             MusicListoLis.eq(nowMusic).addClass("active");
         }
 
@@ -554,10 +607,20 @@
             MusicListoLis.eq(nowMusic).removeClass("active");
             if (nowMusic === Music.length - 1) {
                 nowMusic = 0;
-                loadMuisc(nowMusic);
-            } else {   
-                loadMuisc(++nowMusic);
+            } else {
+                nowMusic += 1;
             }
+            
+            // 同理 递归下一首
+            DeleteStack.forEach(function (value) {
+              var DeleteFavorite = value[0],
+                  DeleteIndex = value[1]
+              if (nowFavorite === DeleteFavorite && nowMusic === DeleteIndex) {
+                return nextMuisc();
+              }
+            })
+
+            loadMuisc(nowMusic);
             MusicListoLis.eq(nowMusic).addClass("active");
         }
 
@@ -627,10 +690,31 @@
                 '<div class="scroll-bar"></div>'+
             '</div>';
             musicList.html(html);
-        }
 
-        function Must () {
-            throw new Error("这个参数不能少哦");
+            // 错误歌曲处理
+            DeleteStack.forEach(function (value) {
+              var DeleteFavorite = value[0],
+                  DeleteIndex    = value[1]
+
+              var bannedElement = $("button[data-favorite-index="+DeleteFavorite+"][data-music-index="+DeleteIndex+"]"),
+                  oName = bannedElement.find(".muisc-name"),
+                  oParent = bannedElement.parent();
+
+              bannedElement.css({
+                "cursor": "not-allowed"
+              })
+
+              oName.css({
+                "color": "red",
+                "textDecoration": "line-through"
+              })
+
+              // 禁止用户再次点击播放
+              oParent.on("click", function (ev) {
+                ev.stopPropagation();
+                return false;
+              })
+            })   
         }
 
         function getTime( iNum ) {
