@@ -4,7 +4,7 @@
 
 此项目的第一首歌，献给光叔，致远行。
 
-![demo-pic](http://numerhero.github.io/assets/download/jQ-html5-audio-component/demo-pic.png)
+![demo-pic](http://bilibiliou.github.io/assets/download/jQ-html5-audio-component/demo-pic.png)
 
 ## get start
 
@@ -71,7 +71,7 @@ $(".musicMedia-wrap").musicMedia({
 
 ## 新增错误处理
 
-![pic](http://numerhero.github.io/assets/download/jQ-html5-audio-component/error.png)
+![pic](http://bilibiliou.github.io/assets/download/jQ-html5-audio-component/error.png)
 
 如图，如果蓝莲花无法加载则会自动加载下一首或上一首 并提醒用户无法播放和禁止用户再点击播放
 
